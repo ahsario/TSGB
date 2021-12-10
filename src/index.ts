@@ -2,6 +2,7 @@ import { renderSearchFormBlock } from './search-form.js';
 import { renderSearchStubBlock } from './search-results.js';
 import { renderUserBlock } from './user.js';
 import { renderToast } from './lib.js';
+import { getTodosByCount } from './utils/getTodosByCount.js';
 
 const dateNow = new Date();
 const defStartDate = new Date(dateNow.setDate(dateNow.getDate() + 1))
@@ -22,8 +23,9 @@ window.addEventListener('DOMContentLoaded', () => {
     },
     {
       name: 'Понял',
-      handler: () => {
-        console.log('Уведомление закрыто');
+      handler: async () => {
+        console.log(await getTodosByCount(4));
+        console.log('Уведомление закрыто на ремонт');
       },
     }
   );
